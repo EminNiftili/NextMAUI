@@ -18,21 +18,12 @@
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Visual Studio 2022+ with .NET MAUI workload
-- Android/iOS emulator setup
-- Git
+- Minumum [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ### Installation
 
-```bash
-git clone https://github.com/EminNiftili/NextMAUI.git
-cd NextMAUI
-dotnet restore
-dotnet build
-```
+*SOON*
 
----
 
 ## 🔔 How to Use the Notification System
 
@@ -69,7 +60,7 @@ public static MauiApp CreateMauiApp()
 Simple notification:
 
 ```csharp
-var notification = INotificationService.Current.CreateSimpleNotification(
+var notification = INextNotificationService.Current.CreateSimpleNotification(
     title: "Hello!",
     content: "This is a simple notification"
 );
@@ -78,7 +69,7 @@ var notification = INotificationService.Current.CreateSimpleNotification(
 Scheduled notification:
 
 ```csharp
-var notification = INotificationService.Current.CreateSimpleNotification(
+var notification = INextNotificationService.Current.CreateSimpleNotification(
     title: "Reminder",
     content: "This is a scheduled notification",
     timer: DateTime.Now.AddMinutes(5),
@@ -94,7 +85,7 @@ var notification = INotificationService.Current.CreateSimpleNotification(
 ### Step 3: Show the Notification
 
 ```csharp
-INotificationService.Current.ShowNotification(notification);
+INextNotificationService.Current.ShowNotification(notification);
 ```
 
 ---
@@ -102,13 +93,13 @@ INotificationService.Current.ShowNotification(notification);
 ### Step 4: Handle Events
 
 ```csharp
-INotificationService.Current.NotificationTapped += (sender, e) =>
+INextNotificationService.Current.NotificationTapped += (sender, e) =>
 {
     var data = e.NotificationOption?.ExtraDatas;
     Console.WriteLine($"Tapped notification: {data?["event"]}");
 };
 
-INotificationService.Current.NotificationReceived += (sender, e) =>
+INextNotificationService.Current.NotificationReceived += (sender, e) =>
 {
     Console.WriteLine($"Received: {e.NotificationOption?.Title}");
 };
@@ -118,10 +109,10 @@ INotificationService.Current.NotificationReceived += (sender, e) =>
 
 ## 📘 API Overview
 
-### `INotificationService`
+### `INextNotificationService`
 
 ```csharp
-interface INotificationService
+interface INextNotificationService
 {
     event EventHandler<NotificationEventArgs> NotificationTapped;
     event EventHandler<NotificationEventArgs> NotificationReceived;
@@ -144,10 +135,10 @@ interface INextNotificationOptions
 }
 ```
 
-### `NotificationType`
+### `NextNotificationType`
 
 ```csharp
-enum NotificationType
+enum NextNotificationType
 {
     SimpleNotification = 1,
     SimpleNotificationWithTimer = 2
