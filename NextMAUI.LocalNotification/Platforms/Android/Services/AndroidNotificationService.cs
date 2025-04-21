@@ -9,7 +9,7 @@ using NextMAUI.LocalNotification.Services;
 
 namespace NextMAUI.LocalNotification.Platforms.Android.Services
 {
-    public class AndroidNotificationService : INotificationService
+    public class AndroidNotificationService : INextNotificationService
     {
         internal static Type NotificationIntentActivity;
         internal static Func<NotificationCompat.Builder, NotificationCompat.Builder> NotificationBuilder;

@@ -8,15 +8,15 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Services
 {
 
     [Preserve(AllMembers = true)]
-    public class IosNotificationService : NSObject, INotificationService
+    public class IosNotificationService : NSObject, INextNotificationService
     {
-        internal static IosNotificationService Instance => INotificationService.Current as IosNotificationService;
+        internal static IosNotificationService Instance => INextNotificationService.Current as IosNotificationService;
 
         private int messageId = 0;
 
         public IosNotificationService()
         {
-            INotificationService.Current = this;
+            INextNotificationService.Current = this;
             UNUserNotificationCenter.Current.Delegate = new NotificationReceiver();
         }
 
