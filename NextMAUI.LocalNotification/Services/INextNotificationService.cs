@@ -2,9 +2,9 @@
 
 namespace NextMAUI.LocalNotification.Services
 {
-    public interface INotificationService
+    public interface INextNotificationService
     {
-        public static INotificationService Current { get; protected set; }
+        public static INextNotificationService Current { get; protected set; }
         event EventHandler<NotificationEventArgs> NotificationTapped;
         event EventHandler<NotificationEventArgs> NotificationReceived;
         void ShowNotification(INextNotificationOptions notificationElement);
