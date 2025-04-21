@@ -6,7 +6,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Models
     public class AndroidNotificationOptions : INextNotificationOptions
     {
         public string Id { get; internal set; }
-        public NotificationType NotificationType { get; internal set; }
+        public NextNotificationType NotificationType { get; internal set; }
         public string Title { get; internal set; }
         public string Body { get; internal set; }
         public DateTime? Timer { get; internal set; }

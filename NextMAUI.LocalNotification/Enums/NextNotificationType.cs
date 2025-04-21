@@ -1,6 +1,6 @@
 ﻿namespace NextMAUI.LocalNotification.Enums
 {
-    public enum NotificationType
+    public enum NextNotificationType
     {
         SimpleNotification = 1,
         SimpleNotificationWithTimer = 2

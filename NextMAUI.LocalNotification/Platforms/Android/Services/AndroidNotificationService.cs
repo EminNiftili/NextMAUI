@@ -42,7 +42,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
                 Id = Guid.NewGuid().ToString(),
                 Title = title,
                 Body = content,
-                NotificationType = NotificationType.SimpleNotification,
+                NotificationType = NextNotificationType.SimpleNotification,
                 ExtraDatas = extraData
             };
 
@@ -55,7 +55,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
                 Id = Guid.NewGuid().ToString(),
                 Title = title,
                 Body = content,
-                NotificationType = NotificationType.SimpleNotificationWithTimer,
+                NotificationType = NextNotificationType.SimpleNotificationWithTimer,
                 ExtraDatas = extraData
             };
 
@@ -81,7 +81,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
             Intent intent;
             PendingIntent pendingIntent;
 
-            if (androidOptions.NotificationType is NotificationType.SimpleNotificationWithTimer)
+            if (androidOptions.NotificationType is NextNotificationType.SimpleNotificationWithTimer)
             {
                 intent = new Intent(Platform.AppContext, typeof(string)); //AlarmHandler
                 intent = CreateIntentByNotificationOption(androidOptions, intent);
@@ -103,7 +103,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
             builder = NotificationBuilder.Invoke(builder);
             builder = builder.SetContentIntent(pendingIntent);
 
-            if (androidOptions.NotificationType is NotificationType.SimpleNotification or NotificationType.SimpleNotificationWithTimer)
+            if (androidOptions.NotificationType is NextNotificationType.SimpleNotification or NextNotificationType.SimpleNotificationWithTimer)
             {
                 builder = builder.SetContentTitle(androidOptions.Title)
                                  .SetContentText(androidOptions.Body);
@@ -162,7 +162,7 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
         {
             var option = new AndroidNotificationOptions();
             option.Id = intent.GetStringExtra(NotificationKey);
-            option.NotificationType = (NotificationType)intent.GetIntExtra($"{NotificationValue}{nameof(option.NotificationType)}", 0);
+            option.NotificationType = (NextNotificationType)intent.GetIntExtra($"{NotificationValue}{nameof(option.NotificationType)}", 0);
             if (intent.HasExtra($"{NotificationValue}{nameof(option.Title)}"))
             {
                 option.Title = intent.GetStringExtra($"{NotificationValue}{nameof(option.Title)}");
@@ -190,12 +190,12 @@ namespace NextMAUI.LocalNotification.Platforms.Android.Services
         {
             intent = intent.PutExtra(NotificationKey, option.Id);
             intent = intent.PutExtra($"{NotificationValue}{nameof(option.NotificationType)}", (int)option.NotificationType);
-            if (option.NotificationType == NotificationType.SimpleNotification)
+            if (option.NotificationType == NextNotificationType.SimpleNotification)
             {
                 intent = intent.PutExtra($"{NotificationValue}{nameof(option.Title)}", option.Title);
                 intent = intent.PutExtra($"{NotificationValue}{nameof(option.Body)}", option.Body);
             }
-            if (option.NotificationType == NotificationType.SimpleNotificationWithTimer)
+            if (option.NotificationType == NextNotificationType.SimpleNotificationWithTimer)
             {
                 intent.PutExtra($"{NotificationValue}{nameof(option.Timer)}", option.Timer.ToString());
             }

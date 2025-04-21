@@ -7,7 +7,7 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Models
     [Preserve(AllMembers = true)]
     public class IosNotificationOptions : NSObject, INextNotificationOptions
     {
-        public NotificationType NotificationType { get; internal set; }
+        public NextNotificationType NotificationType { get; internal set; }
         public string Title { get; internal set; }
         public string Body { get; internal set; }
         public int MessageId { get; internal set; }
@@ -59,7 +59,7 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Models
             var options = new IosNotificationOptions();
 
             if (dict[nameof(NotificationType)] is NSString typeStr &&
-                Enum.TryParse<NotificationType>(typeStr.ToString(), out var notificationType))
+                Enum.TryParse<NextNotificationType>(typeStr.ToString(), out var notificationType))
             {
                 options.NotificationType = notificationType;
             }

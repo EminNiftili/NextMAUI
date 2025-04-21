@@ -30,7 +30,7 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Services
                 Body = content,
                 Title = title,
                 MessageId = messageId++,
-                NotificationType = Enums.NotificationType.SimpleNotification,
+                NotificationType = Enums.NextNotificationType.SimpleNotification,
                 ExtraDatas = extraData,
             };
             return option;
@@ -42,7 +42,7 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Services
                 Body = content,
                 Title = title,
                 MessageId = messageId++,
-                NotificationType = Enums.NotificationType.SimpleNotification,
+                NotificationType = Enums.NextNotificationType.SimpleNotification,
                 Timer = timer,
                 ExtraDatas = extraData,
             };
@@ -66,14 +66,14 @@ namespace NextMAUI.LocalNotification.Platforms.iOS.Services
                     new NSObject[] { new NSString("option") })
             };
 
-            if (iosOptions.NotificationType is Enums.NotificationType.SimpleNotification or Enums.NotificationType.SimpleNotificationWithTimer)
+            if (iosOptions.NotificationType is Enums.NextNotificationType.SimpleNotification or Enums.NextNotificationType.SimpleNotificationWithTimer)
             {
                 content.Title = iosOptions.Title;
                 content.Body = iosOptions.Body;
             }
 
             UNNotificationTrigger trigger;
-            if (iosOptions.NotificationType is Enums.NotificationType.SimpleNotificationWithTimer)
+            if (iosOptions.NotificationType is Enums.NextNotificationType.SimpleNotificationWithTimer)
                 trigger = UNCalendarNotificationTrigger.CreateTrigger(GetNSDateComponents(iosOptions.Timer.Value), false);
             else
                 trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(1, false);

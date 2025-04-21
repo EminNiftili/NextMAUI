@@ -4,7 +4,7 @@ namespace NextMAUI.LocalNotification.Models
 {
     public interface INextNotificationOptions
     {
-        NotificationType NotificationType { get; }
+        NextNotificationType NotificationType { get; }
         string Title { get; }
         string Body { get; }
         DateTime? Timer { get; }
