@@ -2,8 +2,6 @@
 
 **NextMAUI** is a cross-platform mobile application framework built using .NET MAUI. It offers a robust and extensible notification system out-of-the-box, making it easy to integrate local notifications in your mobile applications.
 
----
-
 ## 🔧 Features
 
 - Cross-platform notification support (Android, iOS)
@@ -11,6 +9,16 @@
 - Easy integration with `MauiAppBuilder`
 - Supports extra metadata (key-value) in notifications
 - Built-in scheduling for future alerts
+
+---
+
+## Basic setup
+1. Install NextMAUI.LocalNotification
+2. Setup in MauiProgram.cs
+3. Setup MainActivity and android.manifest (Android)
+4. Setup info.plist (iOS)
+5. Enjoy
+
 
 ---
 
