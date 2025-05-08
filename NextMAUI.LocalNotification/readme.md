@@ -1,12 +1,5 @@
 
 
-
-
-
-
-
-
-
 # NextMAUI
 
 **NextMAUI** is a cross-platform mobile application framework built using .NET MAUI. It offers a robust and extensible notification system out-of-the-box, making it easy to integrate local notifications in your mobile applications.
